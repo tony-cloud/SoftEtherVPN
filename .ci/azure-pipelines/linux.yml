@@ -18,3 +18,26 @@ jobs:
       sudo BUILD_BINARIESDIRECTORY=$BUILD_BINARIESDIRECTORY .ci/start-se-openvpn.sh
       sudo BUILD_BINARIESDIRECTORY=$BUILD_BINARIESDIRECTORY .ci/run-openvpn-tests.sh
     displayName: 'Test'
+  - script: |
+      sudo chmod 0777 -R $BUILD_BINARIESDIRECTORY
+    displayName: 'Set permission'
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: '$(Build.BinariesDirectory)'
+      contents: '?(vpnserver|vpnclient|vpncmd|vpntest|vpnbridge|*.se2|*.so)'
+      TargetFolder: '$(Build.StagingDirectory)/binaries'
+      flattenFolders: false
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: '$(Build.BinariesDirectory)'
+      contents: '?(*.deb)'
+      TargetFolder: '$(Build.StagingDirectory)/packages'
+      flattenFolders: false
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(Build.StagingDirectory)/binaries'
+      artifactName: 'Ubuntu_x64'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(Build.StagingDirectory)/packages'
+      artifactName: 'Ubuntu_x64'
