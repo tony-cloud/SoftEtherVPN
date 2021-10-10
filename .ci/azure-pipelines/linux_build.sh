@@ -8,6 +8,7 @@ else
 fi
 
 cd ${BUILD_BINARIESDIRECTORY}
+export USE_MUSL=1
 
 cmake -G "Ninja" -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_NUMBER=${BUILD_NUMBER} ${BUILD_SOURCESDIRECTORY}
 cmake --build .
