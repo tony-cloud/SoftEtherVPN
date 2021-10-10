@@ -36,8 +36,8 @@ jobs:
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: '$(Build.StagingDirectory)/binaries'
-      artifactName: 'Ubuntu_x64'
+      artifactName: 'Binaries-linux-Ubuntu-x64'
   - task: PublishBuildArtifacts@1
     inputs:
       pathtoPublish: '$(Build.StagingDirectory)/packages'
-      artifactName: 'Ubuntu_x64'
+      artifactName: 'Installers'

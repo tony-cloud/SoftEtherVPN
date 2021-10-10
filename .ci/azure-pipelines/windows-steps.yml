@@ -38,7 +38,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.StagingDirectory)/binaries'
-    artifactName: 'Binaries'
+    artifactName: 'Binaries-windows-${{parameters.architecture}}'
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(Build.StagingDirectory)/installers'
