@@ -11,7 +11,7 @@ for %%? in ("%tmp%\length.txt") do ( set /A SE_BUILD_NUMBER_TOKEN_LENGTH=%%~z? -
 if %SE_BUILD_NUMBER_TOKEN_LENGTH% equ 64 (
 	for /f "tokens=* USEBACKQ" %%g in (`curl "https://softether.network/get-build-number?commit=%BUILD_SOURCEVERSION%&version=%VERSION%&token=%SE_BUILD_NUMBER_TOKEN%"`) do (set "BUILD_NUMBER=%%g")
 ) else (
-	set BUILD_NUMBER=0
+	set BUILD_NUMBER=5180
 )
 
 cd %BUILD_BINARIESDIRECTORY%
